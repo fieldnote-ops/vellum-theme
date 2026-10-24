@@ -1,0 +1,139 @@
+# Vellum shell surfaces.
+#
+# The bar is a slightly deeper sheet than the terminal paper; cards sit a shade
+# lighter than both. A dark-ink scrim gives light-theme overlays real depth
+# instead of washing the desktop out in white.
+
+[bar]
+background       = "#f0eade"
+background-alpha = 1.0
+text             = "#423f36"
+active           = "#9c3a32"
+scale-with-font  = true
+size-horizontal  = 26
+size-vertical    = 28
+
+[hyprland]
+active-border            = "#2c6a59 #9c4f17 35deg"
+active-border-foreground = "#2c6a59 #9c4f17 35deg"
+
+[controls]
+normal-color        = "#423f36"
+normal-fill-alpha   = 0.035
+normal-border       = "#615c51"
+normal-border-width = 1
+normal-border-alpha = 0.24
+
+hover-cursor-color        = "#2c6a59"
+hover-cursor-fill-alpha   = 0.07
+hover-cursor-border       = "#2c6a59"
+hover-cursor-border-width = 1
+hover-cursor-border-alpha = 0.42
+
+focus-color        = "#2c6a59"
+focus-fill-alpha   = 0.07
+focus-border       = "#2c6a59"
+focus-border-width = 1
+focus-border-alpha = 0.55
+
+selected-color        = "#245a4c"
+selected-fill-alpha   = 0.14
+selected-border       = "#2c6a59"
+selected-border-width = 1
+selected-border-alpha = 0.34
+
+pressed-fill-alpha   = 0.18
+selection-fill-alpha = 0.28
+
+[spacing]
+scale = 1.0
+scale-with-font = true
+
+[font]
+base-size = 12
+
+[popups]
+background       = "#fcf9f2"
+background-alpha = 1.0
+text             = "#423f36"
+border           = "#d8cebb"
+border-alpha     = 1.0
+border-width     = 1
+
+[tooltip]
+background       = "#fcf9f2"
+background-alpha = 0.98
+text             = "#423f36"
+border           = "#cfc4b0"
+border-alpha     = 1.0
+
+[notifications]
+background       = "#fcf9f2"
+background-alpha = 1.0
+text             = "#423f36"
+border           = "#d8cebb"
+border-alpha     = 1.0
+border-width     = 1
+countdown        = "#2c6a59"
+
+[launcher]
+background                = "#fcf9f2"
+background-alpha          = 0.97
+text                      = "#423f36"
+border                    = "#d8cebb"
+border-alpha              = 1.0
+scrim                     = "#1a1915"
+scrim-alpha               = 0.30
+selected-background       = "#2c6a59"
+selected-background-alpha = 0.13
+selected-text             = "#245a4c"
+selected-border           = "#2c6a59"
+selected-border-alpha     = 0.42
+
+[menu]
+background                = "#fcf9f2"
+background-alpha          = 1.0
+text                      = "#423f36"
+border                    = "#d8cebb"
+border-alpha              = 1.0
+scrim                     = "#1a1915"
+scrim-alpha               = 0.30
+selected-background       = "#2c6a59"
+selected-background-alpha = 0.13
+selected-text             = "#245a4c"
+selected-border           = "#2c6a59"
+selected-border-alpha     = 0.42
+
+[polkit]
+background       = "#fcf9f2"
+background-alpha = 1.0
+text             = "#423f36"
+text-error       = "#9c3a32"
+border           = "#d8cebb"
+border-error     = "#9c3a32"
+border-alpha     = 1.0
+scrim            = "#1a1915"
+scrim-alpha      = 0.30
+accent           = "#2c6a59"
+
+[lock]
+background       = "#fbf7ef"
+background-alpha = 0.90
+text             = "#423f36"
+placeholder      = "#615c51"
+text-error       = "#9c3a32"
+border           = "#c9bea9"
+border-active    = "#2c6a59"
+border-error     = "#9c3a32"
+border-alpha     = 1.0
+selection        = "#2c6a59"
+selection-alpha  = 0.35
+
+[image-picker]
+scrim                   = "#1a1915"
+scrim-alpha             = 0.34
+text                    = "#423f36"
+selected-border         = "#2c6a59"
+selected-border-alpha   = 1.0
+unselected-border       = "#423f36"
+unselected-border-alpha = 0.30

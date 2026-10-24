@@ -1,0 +1,43 @@
+# Vellum — sun-warmed paper, iron-gall ink, verdigris and clay.
+#
+# Text lives in a comfortable contrast band: body ink 9.5:1 on paper (not the
+# 14:1 glare of near-black), secondary 8.0:1, muted 6.0:1, comments 5.2:1.
+# Every ANSI color clears 5:1, including the bright set, so nothing disappears
+# on the page and nothing burns into it.
+
+mode = "light"
+
+accent = "#2c6a59"
+selection = "#e1dac9"
+selection_background = "#dce7df"
+selection_foreground = "#1f3a33"
+muted = "#615c51"
+
+background = "#f7f3ea"
+dark_background = "#f0eade"
+darker_background = "#e7e0d1"
+lighter_background = "#eee7da"
+
+foreground = "#423f36"
+dark_foreground = "#6b6558"
+light_foreground = "#4f4a40"
+bright_foreground = "#22211c"
+
+red = "#9c3a32"
+yellow = "#78590b"
+orange = "#9c4f17"
+green = "#42682b"
+cyan = "#186965"
+blue = "#2b5790"
+magenta = "#7d3c65"
+brown = "#704225"
+
+bright_red = "#aa3f36"
+bright_yellow = "#835f0c"
+bright_green = "#48722f"
+bright_cyan = "#1a716b"
+bright_blue = "#2f619b"
+bright_magenta = "#8e4370"
+
+# The 2px focused-window edge reads as a live verdigris-to-clay seam.
+hyprland_active_border = "rgba(2c6a59ee) rgba(9c4f17ee) 35deg"

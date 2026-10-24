@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2880" height="1920"
+     viewBox="0 0 2880 1920">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fcf9f2"/>
+      <stop offset="0.55" stop-color="#f7f3ea"/>
+      <stop offset="1" stop-color="#f0e9db"/>
+    </linearGradient>
+    
+    <filter id="foldBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="foldTight" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    
+    
+  <filter id="grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4"
+                  seed="11" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+
+  </defs>
+  <rect width="2880" height="1920" fill="url(#paper)"/>
+  <path d="M 260 -140 C 660 420 820 980 540 2060" fill="none" stroke="#26251f" stroke-width="96" stroke-linecap="round" opacity="0.06" filter="url(#foldBlur)"/><path d="M 260 -140 C 660 420 820 980 540 2060" fill="none" stroke="#fffdf6" stroke-width="25.0" stroke-linecap="round" opacity="0.28" filter="url(#foldTight)" transform="translate(9 -6)"/><path d="M 260 -140 C 660 420 820 980 540 2060" fill="none" stroke="#26251f" stroke-width="1.1" stroke-linecap="round" opacity="0.085"/><path d="M 3120 -140 C 2460 520 2260 1180 2700 2060" fill="none" stroke="#26251f" stroke-width="118" stroke-linecap="round" opacity="0.052" filter="url(#foldBlur)"/><path d="M 3120 -140 C 2460 520 2260 1180 2700 2060" fill="none" stroke="#fffdf6" stroke-width="30.7" stroke-linecap="round" opacity="0.28" filter="url(#foldTight)" transform="translate(-11 -6)"/><path d="M 3120 -140 C 2460 520 2260 1180 2700 2060" fill="none" stroke="#26251f" stroke-width="1.1" stroke-linecap="round" opacity="0.085"/><path d="M -140 1510 C 760 1420 1880 1640 3020 1480" fill="none" stroke="#26251f" stroke-width="72" stroke-linecap="round" opacity="0.045" filter="url(#foldBlur)"/><path d="M -140 1510 C 760 1420 1880 1640 3020 1480" fill="none" stroke="#fffdf6" stroke-width="18.7" stroke-linecap="round" opacity="0.28" filter="url(#foldTight)" transform="translate(0 -8)"/><path d="M -140 1510 C 760 1420 1880 1640 3020 1480" fill="none" stroke="#26251f" stroke-width="1.1" stroke-linecap="round" opacity="0.085"/><path d="M 260 -140 C 660 420 820 980 540 2060" fill="none" stroke="#2c6a59" stroke-width="1.4" stroke-linecap="round" opacity="0.060" transform="translate(3 -1)"/><path d="M -140 1510 C 760 1420 1880 1640 3020 1480" fill="none" stroke="#a85719" stroke-width="1.2" stroke-linecap="round" opacity="0.045" transform="translate(0 -2)"/>
+  <rect width="2880" height="1920" filter="url(#grain)" opacity="0.055"
+        style="mix-blend-mode:multiply"/>
+</svg>

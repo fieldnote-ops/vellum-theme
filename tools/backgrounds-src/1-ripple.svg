@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2880" height="1920"
+     viewBox="0 0 2880 1920">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fcf9f2"/>
+      <stop offset="0.55" stop-color="#f7f3ea"/>
+      <stop offset="1" stop-color="#f0e9db"/>
+    </linearGradient>
+    
+    <radialGradient id="cool" cx="0.18" cy="0.12" r="0.7">
+      <stop offset="0" stop-color="#fcf9f2" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#fcf9f2" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="warm" cx="0.9" cy="0.92" r="0.55">
+      <stop offset="0" stop-color="#f0dfc2" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f0dfc2" stop-opacity="0"/>
+    </radialGradient>
+    
+    
+  <filter id="grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4"
+                  seed="11" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+
+  </defs>
+  <rect width="2880" height="1920" fill="url(#paper)"/>
+  <rect width="2880" height="1920" fill="url(#cool)"/><rect width="2880" height="1920" fill="url(#warm)"/><path d="M 2543.4 2204.8 A 620.0 620.0 0 0 1 3606.0 1709.3" fill="none" stroke="#a85719" stroke-width="3.4" stroke-linecap="round" opacity="0.085"/><path d="M 2382.1 2126.4 A 778.0 778.0 0 0 1 3628.2 1518.7" fill="none" stroke="#2c6a59" stroke-width="1.7" stroke-linecap="round" opacity="0.082"/><path d="M 2233.1 2009.7 A 936.0 936.0 0 0 1 3599.4 1313.6" fill="none" stroke="#2c6a59" stroke-width="1.7" stroke-linecap="round" opacity="0.078"/><path d="M 2103.3 1856.9 A 1094.0 1094.0 0 0 1 3516.2 1105.6" fill="none" stroke="#a85719" stroke-width="1.7" stroke-linecap="round" opacity="0.075"/><path d="M 1999.2 1671.0 A 1252.0 1252.0 0 0 1 4060.6 1270.3" fill="none" stroke="#2c6a59" stroke-width="1.7" stroke-linecap="round" opacity="0.071"/><path d="M 1757.7 2287.4 A 1410.0 1410.0 0 0 1 4008.6 1013.9" fill="none" stroke="#2c6a59" stroke-width="1.7" stroke-linecap="round" opacity="0.068"/><path d="M 1592.2 2112.6 A 1568.0 1568.0 0 0 1 3896.1 755.5" fill="none" stroke="#a85719" stroke-width="1.7" stroke-linecap="round" opacity="0.064"/><path d="M 1450.8 1899.8 A 1726.0 1726.0 0 0 1 3721.9 508.0" fill="none" stroke="#2c6a59" stroke-width="3.4" stroke-linecap="round" opacity="0.061"/><path d="M 1340.2 1652.4 A 1884.0 1884.0 0 0 1 4515.2 831.3" fill="none" stroke="#2c6a59" stroke-width="1.7" stroke-linecap="round" opacity="0.057"/><path d="M 1266.7 1375.1 A 2042.0 2042.0 0 0 1 4388.9 509.2" fill="none" stroke="#a85719" stroke-width="1.7" stroke-linecap="round" opacity="0.054"/><path d="M 972.1 2370.0 A 2200.0 2200.0 0 0 1 4192.8 197.5" fill="none" stroke="#2c6a59" stroke-width="1.7" stroke-linecap="round" opacity="0.050"/><path d="M 802.4 2098.8 A 2358.0 2358.0 0 0 1 3927.7 -89.5" fill="none" stroke="#2c6a59" stroke-width="1.7" stroke-linecap="round" opacity="0.047"/><path d="M 668.5 1789.8 A 2516.0 2516.0 0 0 1 4969.9 392.2" fill="none" stroke="#a85719" stroke-width="1.7" stroke-linecap="round" opacity="0.043"/><path d="M 577.1 1447.9 A 2674.0 2674.0 0 0 1 4769.3 4.4" fill="none" stroke="#2c6a59" stroke-width="1.7" stroke-linecap="round" opacity="0.040"/><path d="M 534.2 1079.1 A 2832.0 2832.0 0 0 1 4489.5 -360.5" fill="none" stroke="#2c6a59" stroke-width="3.4" stroke-linecap="round" opacity="0.036"/><path d="M -120 1240 C 700 1170 1200 1310 1900 1210 S 2700 1160 3000 1190" fill="none" stroke="#2c6a59" stroke-width="1.8" opacity="0.07"/>
+  <rect width="2880" height="1920" filter="url(#grain)" opacity="0.055"
+        style="mix-blend-mode:multiply"/>
+</svg>

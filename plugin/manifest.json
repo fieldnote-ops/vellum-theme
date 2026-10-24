@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "local.vellum-ambient",
+  "name": "Vellum Ambient",
+  "version": "1.0.0",
+  "author": "Vellum",
+  "license": "MIT",
+  "description": "A slow, local ripple of verdigris, clay and ochre inside Vellum's dawn wallpaper.",
+  "kinds": ["service"],
+  "entryPoints": {
+    "service": "Ambient.qml"
+  }
+}
