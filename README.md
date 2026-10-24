@@ -9,6 +9,8 @@ body 9.5, secondary 8.0, muted 6.0, comments 5.2, syntax 5.1–7.6. Every ANSI
 color, including the bright set, clears 5:1 on the page, so nothing disappears
 and nothing burns.
 
+![Vellum desktop](screenshots/showcase.png)
+
 ## Palette
 
 | Role | Hex | Contrast on paper |
@@ -58,6 +60,8 @@ password field. A theme cannot animate it or add content through `shell.toml`;
 `[lock]` only styles the field card. `lock/` is a companion that clones
 `omarchy.lock` and replaces only its visual `LockView.qml` — the cloned
 `Service.qml` (PAM and session lock) stays exactly as Omarchy ships it.
+
+![Vellum lock screen](screenshots/lock.png)
 
 ```bash
 bash lock/install.sh
