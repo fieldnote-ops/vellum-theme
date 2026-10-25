@@ -32,6 +32,18 @@ and nothing burns.
 The light-theme brights are deliberately darker, not washed out: the whole
 bright set stays at 5.09:1 or better.
 
+## In use
+
+Both cards are drawn from the theme's own data — `colors.toml` for the palette
+and the syntax roles Omarchy generates from it, `foot.ini` for the terminal
+slots — by `tools/specimens.py`. The figures on the right are computed contrast
+against the paper, so the page can be read at a glance: nothing burns in,
+nothing fades out.
+
+![Syntax highlighting on Vellum paper](screenshots/syntax.png)
+
+![Terminal session and ANSI slots on Vellum paper](screenshots/terminal.png)
+
 ## Surface logic
 
 - Bar: `#f0eade`, one sheet deeper than the terminal paper.
@@ -130,6 +142,8 @@ updating `plugin/`, copy it again.
 ## Screenshots
 
 - `screenshots/showcase.png` — dawn wallpaper, bar, floating terminal, palette card.
+- `screenshots/syntax.png` — editor specimen: syntax roles with measured contrast.
+- `screenshots/terminal.png` — foot session, selection, and the sixteen ANSI slots.
 - `screenshots/neovim.png` — generated Aether/Neovim theme in a tiled terminal.
 - `screenshots/menu.png` — root menu card and scrim.
 - `screenshots/lock.png` — animated lock/suspend view with clock, date and field.
@@ -142,6 +156,7 @@ updating `plugin/`, copy it again.
 - `vellum/foot.ini` — readable ANSI black for light-mode terminals.
 - `vellum/backgrounds/` — `0-dawn`, `1-ripple`, `2-strata`, `3-fold` (2880×1920).
 - `tools/make_backgrounds.py` — regenerates the wallpapers; pass a name to rebuild one.
+- `tools/specimens.py` — regenerates `screenshots/syntax.png` and `terminal.png`.
 - `tools/backgrounds-src/` — editable SVG sources for the four wallpapers.
 - `plugin/` — optional `local.vellum-ambient` service plugin for the dawn ripple.
 - `plugin/Ambient.qml` — procedural 12.5 fps ripple with idle/lock/fullscreen pause.
