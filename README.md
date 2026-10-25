@@ -34,15 +34,17 @@ bright set stays at 5.09:1 or better.
 
 ## In use
 
-Both cards are drawn from the theme's own data — `colors.toml` for the palette
-and the syntax roles Omarchy generates from it, `foot.ini` for the terminal
-slots — by `tools/specimens.py`. The figures on the right are computed contrast
-against the paper, so the page can be read at a glance: nothing burns in,
-nothing fades out.
+All three cards are drawn from the theme's own data — `colors.toml` for the
+palette and the syntax roles Omarchy generates from it, `foot.ini` for the
+terminal slots, `shell.toml` for the bar and popups — by
+`tools/specimens.py`. The figures on the right are computed contrast, so the
+page can be read at a glance: nothing burns in, nothing fades out.
 
 ![Syntax highlighting on Vellum paper](screenshots/syntax.png)
 
 ![Terminal session and ANSI slots on Vellum paper](screenshots/terminal.png)
+
+![Bar, menu and notification surfaces](screenshots/surfaces.png)
 
 ## Surface logic
 
@@ -50,20 +52,31 @@ nothing fades out.
 - Cards, menus, notifications: `#fcf9f2`, one sheet lighter.
 - Overlay scrim: warm ink at 30%, so light-theme modals gain depth instead of
   fading into the desktop.
-- Menus select with a 13% verdigris fill and dark verdigris text, never a
-  saturated block that would glare.
+- Menus select with a 20% verdigris fill and deep verdigris (`#1f3a33`) text,
+  never a saturated block that would glare.
+- Popup hairlines: `#c6baa4` (1.8:1 on the card). A light theme cannot separate
+  a card from paper by fill alone, so the edge does that work — and only the
+  edge: the delimiter never carries text.
 - Focused windows: 2 px verdigris-to-clay gradient at 35°.
 - Unfocused windows: `rgba(8a8375aa)`.
 - Soft warm shadow (`range 18`, 15% ink) and Omarchy's square corners retained.
 
-Icons use Yaru-sage. All other app themes (terminals, Neovim, Helix, btop,
-VS Code, Chromium, Obsidian, Claude, gum) are generated from `colors.toml` by
-Omarchy, so the palette reaches every surface.
+Icons use Yaru-sage. All other app themes (terminals, Helix, btop, VS Code,
+Chromium, Obsidian, Claude, gum) are generated from `colors.toml` by Omarchy,
+so the palette reaches every surface.
 
 `foot.ini` is the one hand-written terminal config: Omarchy's generic template
 maps ANSI black to the background, which makes explicit black text disappear on
 a light theme. Vellum keeps `regular0` at readable ink (`#38362e`) and bright
 black at muted (`#615c51`). New Foot windows pick this up immediately.
+
+`neovim.lua` is the second: Aether only takes the colours, so Neovim stayed on
+`background=dark` with a transparent popup menu and a `PmenuSel` that left ink
+at 1.9:1 — the menu row you could not read. Vellum's file parses `colors.toml`
+at startup (no second copy of the palette) and pins the popup ladder the
+palette needs — page, bar-deep menu, mist selection, ink text — on every
+`ColorScheme`. Because it replaces Omarchy's generated file, re-copy it from
+the theme if a future Omarchy template gains new keys.
 
 ## Lock + suspend (optional)
 
@@ -144,6 +157,7 @@ updating `plugin/`, copy it again.
 - `screenshots/showcase.png` — dawn wallpaper, bar, floating terminal, palette card.
 - `screenshots/syntax.png` — editor specimen: syntax roles with measured contrast.
 - `screenshots/terminal.png` — foot session, selection, and the sixteen ANSI slots.
+- `screenshots/surfaces.png` — bar, menu, notification and their measured pairs.
 - `screenshots/neovim.png` — generated Aether/Neovim theme in a tiled terminal.
 - `screenshots/menu.png` — root menu card and scrim.
 - `screenshots/lock.png` — animated lock/suspend view with clock, date and field.
@@ -154,9 +168,10 @@ updating `plugin/`, copy it again.
 - `vellum/shell.toml` — hand-tuned Omarchy shell surfaces.
 - `vellum/hyprland.lua` — focus seam, shadows, groupbar.
 - `vellum/foot.ini` — readable ANSI black for light-mode terminals.
+- `vellum/neovim.lua` — palette plus the popup/float ladder Neovim needs.
 - `vellum/backgrounds/` — `0-dawn`, `1-ripple`, `2-strata`, `3-fold` (2880×1920).
 - `tools/make_backgrounds.py` — regenerates the wallpapers; pass a name to rebuild one.
-- `tools/specimens.py` — regenerates `screenshots/syntax.png` and `terminal.png`.
+- `tools/specimens.py` — regenerates the three specimen cards.
 - `tools/backgrounds-src/` — editable SVG sources for the four wallpapers.
 - `plugin/` — optional `local.vellum-ambient` service plugin for the dawn ripple.
 - `plugin/Ambient.qml` — procedural 12.5 fps ripple with idle/lock/fullscreen pause.
