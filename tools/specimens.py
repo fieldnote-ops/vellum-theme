@@ -55,15 +55,6 @@ def load_colors() -> dict[str, str]:
     return tomllib.loads((THEME / "colors.toml").read_text())
 
 
-def load_shell() -> dict[str, dict[str, object]]:
-    return tomllib.loads((THEME / "shell.toml").read_text())
-
-
-def mix(front: str, back: str, alpha: float) -> str:
-    f, b = rgb(front), rgb(back)
-    return "#%02x%02x%02x" % tuple(round(b[i] * (1 - alpha) + f[i] * alpha) for i in range(3))
-
-
 def load_foot() -> dict[str, str]:
     parser = configparser.ConfigParser()
     parser.read_string((THEME / "foot.ini").read_text())
@@ -534,115 +525,6 @@ def terminal_card(colors: dict[str, str], foot: dict[str, str]) -> str:
     return "".join(out)
 
 
-def menu_card(colors: dict[str, str], shell: dict[str, dict[str, object]]) -> str:
-    bar = shell["bar"]
-    menu = shell["menu"]
-    paper, ink = colors["background"], colors["foreground"]
-    card = str(menu["background"])
-    border = str(menu["border"])
-    sel_fill = mix(str(menu["selected-background"]), card, float(menu["selected-background-alpha"]))
-    sel_text = str(menu["selected-text"])
-    bar_bg = str(bar["background"])
-
-    out = [backdrop(colors), window(colors, "vellum shell", "bar · menu · notification")]
-
-    # the bar: one sheet deeper than the page
-    bar_h = 36
-    out.append(f'<rect x="{WIN_X}" y="{CONTENT_TOP}" width="{WIN_W}" height="{bar_h}" fill="{bar_bg}"/>')
-    out.append(
-        f'<rect x="{WIN_X}" y="{CONTENT_TOP + bar_h}" width="{WIN_W}" height="1" fill="{colors["darker_background"]}"/>'
-    )
-    base = CONTENT_TOP + 24
-    for i, tag in enumerate(["1", "2", "3", "4", "5"]):
-        active = tag == "2"
-        out.append(
-            text(
-                WIN_X + PAD + i * 22,
-                base,
-                tag,
-                str(bar["active"]) if active else colors["muted"],
-                13,
-                weight=700 if active else 400,
-            )
-        )
-    out.append(text(WIN_X + PAD + 128, base, "foot", ink, 12.5))
-    out.append(
-        text(WIN_X + WIN_W - PAD, base, "cpu 12% · mem 38% · 14:07", colors["muted"], 12.5, anchor="end")
-    )
-
-    block_h = 272
-    top = CONTENT_TOP + bar_h + (WIN_H - HEADER - bar_h - block_h) / 2
-
-    # the menu: card sheet, hairline, mist selection
-    items = ["Apps", "Learn", "Theme", "Background", "Screenshot", "System"]
-    selected = 2
-    mx, mw, row_h, pad_y = WIN_X + PAD, 320, 34, 12
-    mh = pad_y * 2 + len(items) * row_h
-    out.append(
-        f'<rect x="{mx + 3}" y="{top + 12}" width="{mw}" height="{mh}" fill="{ink}" opacity="0.15" filter="url(#shadow)"/>'
-    )
-    out.append(
-        f'<rect x="{mx}" y="{top:.1f}" width="{mw}" height="{mh}" fill="{card}" stroke="{border}" stroke-width="1"/>'
-    )
-    for i, item in enumerate(items):
-        ry = top + pad_y + i * row_h + 23
-        if i == selected:
-            out.append(
-                f'<rect x="{mx + 1}" y="{top + pad_y + i * row_h:.1f}" width="{mw - 2}" height="{row_h}" '
-                f'fill="{sel_fill}"/>'
-            )
-            out.append(text(mx + 20, ry, item, sel_text, 14.5, weight=700))
-        else:
-            out.append(text(mx + 20, ry, item, ink, 14.5))
-
-    # a notification: one sheet lighter, countdown in accent
-    nx, nw = mx + mw + 40, 320
-    nh = 120
-    out.append(
-        f'<rect x="{nx + 3}" y="{top + 12}" width="{nw}" height="{nh}" fill="{ink}" opacity="0.15" filter="url(#shadow)"/>'
-    )
-    out.append(
-        f'<rect x="{nx}" y="{top:.1f}" width="{nw}" height="{nh}" fill="{card}" stroke="{border}" stroke-width="1"/>'
-    )
-    out.append(text(nx + 20, top + 34, "Screenshots saved", ink, 14.5))
-    out.append(text(nx + 20, top + 58, "~/Pictures/Screenshots", colors["muted"], 12.5))
-    out.append(
-        f'<rect x="{nx + 20}" y="{top + nh - 20}" width="{nw - 40}" height="3" fill="{colors["darker_background"]}"/>'
-    )
-    out.append(f'<rect x="{nx + 20}" y="{top + nh - 20}" width="{(nw - 40) * 0.62:.0f}" height="3" fill="{colors["accent"]}"/>')
-
-    # measured pairs
-    rows = [
-        ("Bar ink", ink, bar_bg, contrast(ink, bar_bg)),
-        ("Menu ink", ink, card, contrast(ink, card)),
-        ("Selected", sel_text, sel_fill, contrast(sel_text, sel_fill)),
-        ("Hairline", border, card, contrast(border, card)),
-    ]
-    px, pw = nx + nw + 40, WIN_X + WIN_W - PAD - (nx + nw + 40)
-    ph = 56 + len(rows) * 44 + 46
-    out.append(
-        f'<rect x="{px}" y="{top:.1f}" width="{pw}" height="{ph}" fill="{colors["lighter_background"]}" '
-        f'stroke="{border}" stroke-width="1"/>'
-    )
-    out.append(label(px + 18, top + 30, "SURFACES ON PAPER", colors["muted"]))
-    for i, (name, front, back, value) in enumerate(rows):
-        ry = top + 62 + i * 44
-        out.append(f'<rect x="{px + 18}" y="{ry - 11}" width="12" height="12" fill="{back}" stroke="{border}"/>')
-        out.append(text(px + 40, ry, name, front, 13.5))
-        out.append(text(px + pw - 18, ry, f"{value:.1f}:1", colors["muted"], 12.5, anchor="end"))
-    out.append(
-        text(
-            px + 18,
-            top + ph - 16,
-            "hairline delimits, it never carries text",
-            colors["muted"],
-            10.5,
-            italic=True,
-        )
-    )
-    return "".join(out)
-
-
 def svg_doc(body: str, colors: dict[str, str], title: str) -> str:
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
   <title>{esc(title)}</title>
@@ -675,7 +557,6 @@ def main() -> None:
     cards = {
         "syntax": (syntax_card(colors), "Vellum: syntax highlighting on paper"),
         "terminal": (terminal_card(colors, foot), "Vellum: terminal ANSI slots on paper"),
-        "surfaces": (menu_card(colors, load_shell()), "Vellum: bar, menu and notification surfaces"),
     }
     for name in sys.argv[1:] or list(cards):
         body, title = cards[name]
